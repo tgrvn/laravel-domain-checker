@@ -1,0 +1,26 @@
+# IDE
+.idea/
+.vscode/
+.fleet/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+docker/pg_data/
+
+# Environment
+.env
+src/.env
+
+# Laravel (redundant safety)
+src/vendor/
+src/node_modules/
+src/storage/framework/views/*.php
+src/storage/framework/sessions/
+src/storage/framework/cache/data/
+src/storage/logs/*.log
+src/bootstrap/cache/*.php
