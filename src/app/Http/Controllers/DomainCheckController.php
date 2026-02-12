@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PaginatedRequest;
 use App\Models\Domain;
 use App\Services\DomainCheckService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -15,11 +16,11 @@ class DomainCheckController extends Controller
         private readonly DomainCheckService $domainCheckService,
     ) {}
 
-    public function index(Domain $domain)
+    public function index(PaginatedRequest $request, Domain $domain)
     {
         $this->authorize('update', $domain);
 
-        $checks = $this->domainCheckService->getChecksForDomain($domain);
+        $checks = $this->domainCheckService->getChecksForDomain($domain, $request->perPage());
 
         return view('domains.checks', compact('domain', 'checks'));
     }

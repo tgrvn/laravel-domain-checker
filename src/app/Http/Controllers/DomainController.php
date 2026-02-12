@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Domain\DomainIndexRequest;
+use App\Http\Requests\PaginatedRequest;
 use App\Http\Requests\Domain\StoreDomainRequest;
 use App\Http\Requests\Domain\UpdateDomainRequest;
 use App\Models\Domain;
@@ -18,7 +18,7 @@ class DomainController extends Controller
         private readonly DomainService $domainService
     ) {}
 
-    public function index(DomainIndexRequest $request)
+    public function index(PaginatedRequest $request)
     {
         $domains = $this->domainService->getAllForUser(
             $request->user(),
